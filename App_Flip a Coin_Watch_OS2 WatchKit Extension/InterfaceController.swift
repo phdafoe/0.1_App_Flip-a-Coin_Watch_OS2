@@ -11,6 +11,70 @@ import Foundation
 
 
 class InterfaceController: WKInterfaceController {
+    
+    
+    //MARK: - VARIABLES LOCALES GLOBALES
+    
+    var coinValue = 0
+    var coinState = ""
+    
+    
+    
+    //MARK: - IBOUTLET
+    
+    @IBOutlet var myLblCoin: WKInterfaceLabel!
+    
+    
+    
+    
+    //MARK: - IBACTION
+    
+    
+    @IBAction func btnFlipACTION() {
+        
+        flipTheCoin()
+        print(coinValue)
+        
+        
+    }
+    
+    //MARK: - UTILS / AUXILIARES
+    
+    func flipTheCoin(){
+        
+        coinValue = Int(arc4random_uniform(2))
+        setCoinState()
+        
+        
+    }
+    
+    
+    func setCoinState(){
+        
+        if coinValue == 0{
+            
+            coinState = "Heads"
+            
+        }else if coinValue == 1{
+            
+            coinState = "Tails"
+        }
+        
+        printCoinState()
+        
+    }
+    
+    func printCoinState(){
+        
+        myLblCoin.setText(coinState)
+    }
+    
+    
+    
+    
+    
+    
+    
 
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
